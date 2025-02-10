@@ -59,7 +59,7 @@
 [color]
     ui = auto
 [commit]
-    gpgsign = true
+	gpgsign = false
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
@@ -91,3 +91,12 @@
     rebase = false
 [init]
     defaultBranch = main
+[user]
+	name = Pablo Alexandrino
+	email = pablo@grupofly.co
+	signingkey = 5196013B1B8D20B3
+	signinkey = /home/pablo/.ssh/github.pub
+[tag]
+	gpgSign = false
+[gpg]
+	format = http

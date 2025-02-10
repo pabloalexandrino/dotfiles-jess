@@ -4,7 +4,7 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 
 sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-sudo dnf install -y \
+sudo dnf install -y --skip-unavailable \
     anacron \
     cargo \
     gnome-tweaks \

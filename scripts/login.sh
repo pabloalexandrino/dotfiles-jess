@@ -9,10 +9,10 @@ cpuTemp=`sensors | grep CPU | awk '{print $2}' | sed 's/+//' | tr -d '\n'`
 loadAvg=`cat /proc/loadavg | awk '{printf "%s %s %s", $1, $2, $3}'`
 
 printf "
-     ⣷⣝⢿⣷⣄      $os
+     ⣷⣝⢿⣷⣄     $os
   ⠲⣶⣶⡿⠟ ⠙⢿⣷⣄   $rootUsed/$rootTotal   $memUsed/$memTotal   $cpuTemp  辰$loadAvg
 
-" | lolcat --truecolor --seed=22 --spread=6
+" | lolcat
 exit
 
 printf "
@@ -21,7 +21,7 @@ printf "
   ⣀⣀⣀⣀⣀⣀⣼⣿⣿⣿⣿ ⠈⠻⣿⣿⣿⣷⣄        $os
   ⠈⠻⣿⣿⣿⣿⣿⡿⠿⠛⠁   ⠈⠻⢿⣿⣿⣷⣄     $rootUsed/$rootTotal   $memUsed/$memTotal   $cpuTemp  辰$loadAvg
 
-" | lolcat --truecolor --seed=22 --spread=6
+" | lolcat
 
 
 #            ⢸⣦⡈⠻⣿⣿⣿⣿⣿⣿⣷⣦⡀

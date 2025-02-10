@@ -19,6 +19,8 @@ HIST_STAMPS="yyyy-mm-dd"
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
+alias ps=/opt/PhpStorm-232.10335.8/bin/phpstorm.sh 
+
 plugins=(
     artisan
     npm
@@ -28,7 +30,6 @@ plugins=(
     dnf
     docker
     docker-compose
-    git
     httpie
     rsync
     tmux
@@ -52,7 +53,7 @@ path=(
     $HOME/.cargo/bin
     ./vendor/bin
     $HOME/.local/share/bob/nvim-bin
-    $HOME/Code/jessarcher/dotfiles/scripts
+    $HOME/Code/pabloalexandrino/dotfiles-jess/scripts
     ${ANDROID_HOME}tools/
     ${ANDROID_HOME}platform-tools/
     $path
@@ -105,19 +106,44 @@ alias mfs="artisan migrate:fresh --seed"
 alias sqlit="sed -e 's/\(DB_.*\)/# \\1/g' -e 's/# \(DB_CONNECTION=\).*/\\1sqlite/g' -i .env"
 alias lenv="cp -n .env.example .env && (grep '^APP_KEY=.\+' .env > /dev/null || artisan key:generate)"
 alias laravel-setup="composer install && lenv && sqlit && artisan migrate --force --seed"
+alias m="artisan migrate"
+alias s="artisan serve"
+alias rl = "artisan route:list"
+
+alias dev="npm run dev"
+alias start="npm run start"
+alias watch="npm run watch"
+alias build="npm run build"
+alias ni="npm install"
+alias nu="npm update"
+alias cu="composer update"
+alias ci="composer install"
 
 # Git
 alias g="git"
 alias gs="git s"
 alias co="git checkout"
 alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "master" || echo "main")'
-alias wip='git commit -m "wip"'
+alias wip='git commit -m "wip" --no-verify'
+alias wips="wip && git push"
+
 nah() {
     git reset --hard
 
     if [[ $1 == "-f" ]]; then
         git clean -df
     fi
+}
+
+gp() {
+    git add .
+    git commit -m "$([ "$1" != "" ] && echo "$1" || echo "update")" --no-verify
+    git push
+}
+
+gm() {
+    git add .
+    git commit -m "$([ "$1" != "" ] && echo "$1" || echo "update")" --no-verify
 }
 
 # Docker
@@ -157,13 +183,16 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
-if [ -e /home/jess/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jess/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e /home/pablo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/pablo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 if [[ $- == *i* && $0 == '/usr/bin/zsh' ]]; then
-    ~/Code/jessarcher/dotfiles/scripts/login.sh
+    ~/Code/pabloalexandrino/dotfiles-jess/scripts/login.sh
 fi
 
 # vim: nospell
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export GPG_TTY=$(tty)
