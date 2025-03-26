@@ -1,0 +1,20 @@
+[    5.652820] snd_hda_intel 0000:01:00.1: Handle vga_switcheroo audio client
+[    5.654713] snd_hda_intel 0000:65:00.1: Handle vga_switcheroo audio client
+[    5.684007] snd_hda_intel 0000:65:00.1: bound 0000:65:00.0 (ops amdgpu_dm_audio_component_bind_ops [amdgpu])
+[    5.685025] input: HD-Audio Generic HDMI/DP,pcm=3 as /devices/pci0000:00/0000:00:08.1/0000:65:00.1/sound/card1/input32
+[    5.967482] snd_hda_codec_realtek hdaudioC2D0: ALC285: picked fixup  for PCI SSID 1043:1b13
+[    5.967564] snd_hda_codec_realtek hdaudioC2D0: Found 2 CSC3556 on i2c (-%s:00-cs35l56-hda.%d)
+[    5.967593] snd_hda_codec_realtek hdaudioC2D0: bound i2c-CSC3556:00-cs35l56-hda.0 (ops cs35l56_hda_comp_ops [snd_hda_scodec_cs35l56])
+[    5.967604] snd_hda_codec_realtek hdaudioC2D0: bound i2c-CSC3556:00-cs35l56-hda.1 (ops cs35l56_hda_comp_ops [snd_hda_scodec_cs35l56])
+[    5.968310] snd_hda_codec_realtek hdaudioC2D0: autoconfig for ALC285: line_outs=2 (0x14/0x17/0x0/0x0/0x0) type:speaker
+[    5.968314] snd_hda_codec_realtek hdaudioC2D0:    speaker_outs=0 (0x0/0x0/0x0/0x0/0x0)
+[    5.968316] snd_hda_codec_realtek hdaudioC2D0:    hp_outs=1 (0x21/0x0/0x0/0x0/0x0)
+[    5.968318] snd_hda_codec_realtek hdaudioC2D0:    mono: mono_out=0x0
+[    5.968320] snd_hda_codec_realtek hdaudioC2D0:    inputs:
+[    5.968321] snd_hda_codec_realtek hdaudioC2D0:      Internal Mic=0x12
+[    5.968323] snd_hda_codec_realtek hdaudioC2D0:      Internal Mic=0x13
+[    5.968325] snd_hda_codec_realtek hdaudioC2D0:      Mic=0x19
+[    5.968326] snd_hda_codec_realtek hdaudioC2D0:      Mic=0x1b
+[    6.613216] input: HD-Audio Generic Mic as /devices/pci0000:00/0000:00:08.1/0000:65:00.6/sound/card2/input33
+[    6.613305] input: HD-Audio Generic Mic as /devices/pci0000:00/0000:00:08.1/0000:65:00.6/sound/card2/input34
+[    6.613366] input: HD-Audio Generic Headphone as /devices/pci0000:00/0000:00:08.1/0000:65:00.6/sound/card2/input35
