@@ -59,7 +59,7 @@
 [color]
     ui = auto
 [commit]
-	gpgsign = false
+	gpgsign = true
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
@@ -94,9 +94,17 @@
 [user]
 	name = Pablo Alexandrino
 	email = pablo@grupofly.co
-	signingkey = 5196013B1B8D20B3
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILbg62l/T/h6CDDAMUMF1s6FYe5YorCW0jDaY1rYPsCY
 	signinkey = /home/pablo/.ssh/github.pub
 [tag]
 	gpgSign = false
 [gpg]
-	format = http
+	format = ssh
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign

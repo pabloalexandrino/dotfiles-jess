@@ -9,8 +9,15 @@
 #--------------------------------------------------------------------------
 # Oh My Zsh
 #--------------------------------------------------------------------------
+#
+fastfetch
+#picom & > /dev/null 2>&1
 
 export ZSH=$HOME/.oh-my-zsh
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/usr/pgsql-17/bin:$PATH"
 
 ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
@@ -19,10 +26,10 @@ HIST_STAMPS="yyyy-mm-dd"
 VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
-alias ps=/opt/PhpStorm-232.10335.8/bin/phpstorm.sh 
+alias ps="nohup phpstorm "$@" > /dev/null 2>&1 &"
+alias monitor="xrandr --output HDMI-1-0 --auto --above eDP-1"
 
 plugins=(
-    artisan
     npm
     vi-mode
     composer
@@ -53,7 +60,7 @@ path=(
     $HOME/.cargo/bin
     ./vendor/bin
     $HOME/.local/share/bob/nvim-bin
-    $HOME/Code/pabloalexandrino/dotfiles-jess/scripts
+    $HOME/dotfiles/scripts
     ${ANDROID_HOME}tools/
     ${ANDROID_HOME}platform-tools/
     $path
@@ -70,6 +77,7 @@ zstyle ':completion:*:descriptions' format %B%d%b
 zstyle ':completion:*:complete:(cd|pushd):*' tag-order \
     'local-directories named-directories'
 
+export PATH=~/.npm-global/bin:$PATH
 export EDITOR=nvim
 export GIT_EDITOR=nvim
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
@@ -98,6 +106,7 @@ alias webcam="gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -p
 alias sail='[ -f sail ] && sail || vendor/bin/sail'
 
 # Laravel
+alias artisan="php artisan"
 alias a="artisan"
 alias tinker="artisan tinker"
 alias seed="artisan db:seed"
@@ -108,8 +117,9 @@ alias lenv="cp -n .env.example .env && (grep '^APP_KEY=.\+' .env > /dev/null || 
 alias laravel-setup="composer install && lenv && sqlit && artisan migrate --force --seed"
 alias m="artisan migrate"
 alias s="artisan serve"
-alias rl = "artisan route:list"
+alias rl="artisan route:list"
 
+alias npm="bun"
 alias dev="npm run dev"
 alias start="npm run start"
 alias watch="npm run watch"
@@ -189,10 +199,15 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 if [[ $- == *i* && $0 == '/usr/bin/zsh' ]]; then
-    ~/Code/pabloalexandrino/dotfiles-jess/scripts/login.sh
+    #~/dotfiles/scripts/login.sh
 fi
 
 # vim: nospell
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export GPG_TTY=$(tty)
+. "/home/pablo/.deno/env"
+
+# bun completions
+[ -s "/home/pablo/.bun/_bun" ] && source "/home/pablo/.bun/_bun"
+
